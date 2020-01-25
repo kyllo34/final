@@ -12,6 +12,17 @@ const database = require('./database.js');
 
 // In the routes file, app.get('/') calls this function
 
+let pageNumber = 1;
+function newCharacters(request, response) {
+  pageNumber++;
+  fetchCharactersFromSWAPI(pageNumber)
+    .then(result => {
+      response.status(200).send(result.results);
+    })
+    .catch(error => { throw error; });
+}
+
+
 function homePageHandler(req, res) {
   // Get page one of the API from star wars
   // THEN, render an EJS Template with that data
@@ -63,4 +74,4 @@ function getNumberOfLikes(data) {
     })
 }
 
-module.exports = { homePageHandler };
+module.exports = { homePageHandler, newCharacters };

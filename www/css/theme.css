@@ -1,0 +1,28 @@
+header, footer {
+  background-color: rgb(145, 112, 165);
+  color: rgb(203, 225, 255)
+}
+
+.character header {
+  background-color: rgb(145, 112, 165);
+}
+main {
+  background-color: rgb(192, 225, 236);
+}
+section {
+  background-color: lightblue;
+}
+
+.character {
+  background-color: rgb(249, 182, 255);
+  color: white;
+}
+
+.character button {
+  border-radius: 2px;
+  border-color: lightsalmon;
+  background-color: maroon;
+  color: white;
+}
+
+

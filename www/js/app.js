@@ -1,15 +1,25 @@
 'use strict';
 
-let likeButtons = document.getElementsByTagName('button');
-
-for (let i = 0; i < likeButtons.length; i++) {
-  likeButtons[i].addEventListener('click', likeMe);
-}
+$('.upvote').on('click', likeMe);
 
 function likeMe(e) {
-  let character = e.target.parentNode;
-  let counter = character.getElementsByTagName('span')[0];
-  let count = parseInt(counter.textContent);
+  let counter = $(this).parent().find('span')[0];  
+  let count = parseInt($(counter).text());
   count++;
-  counter.textContent = count;
+  $(counter).text(count)
 }
+
+let templateId = '#newCharacters-template';
+var templateScript = Handlebars.compile(templateId);
+$('.getMoreCharacters').click(function(event) {
+  event.preventDefault();
+  $.ajax('/characters', {method:'GET', dataType: 'JSON'})
+  .then(result => console.log(result))
+  .catch(error => { throw error; });
+})
+
+// StarWars.prototype.render = function () {
+//   const source = $('#star-wars').html();
+//   let template = Handlebars.compile(source);
+//   return template(this)
+// }

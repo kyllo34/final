@@ -40,10 +40,10 @@ app.set('views', './server/views');
 // Route Handler Definitions. Each express method and route should call
 // a method that the routes.js file exported
 app.get('/', routes.homePageHandler);
-
 // Wire in the defaults we required above.
 app.use('*', defaults.notFoundHandler);
 app.use(defaults.errorHandler);
+app.get('/characters', routes.newCharacters)
 
 // Start the web server on a port (defaults to 3000), after we connect to the database
 function startServer() {
